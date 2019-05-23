@@ -24,6 +24,12 @@ export class Product extends DomainBaseEntity {
   @OneToMany(type => Product, product => product.refTo)
   aliases: Product[]
 
+  @Column('text')
+  type: string
+
+  @Column('text')
+  unit: string
+
   @Column('text', {
     nullable: true
   })
