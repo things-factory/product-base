@@ -1,6 +1,7 @@
 import { Entity, Index, Column, OneToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { Domain, DomainBaseEntity } from '@things-factory/shell'
 import { Company } from '@things-factory/biz-base'
+import { ProductOption } from './product-option'
 
 @Entity('products')
 @Index('ix_product_0', (product: Product) => [product.domain, product.company, product.name], { unique: true })
@@ -23,6 +24,9 @@ export class Product extends DomainBaseEntity {
 
   @OneToMany(type => Product, product => product.refTo)
   aliases: Product[]
+
+  @OneToMany(type => ProductOption, productOption => productOption.product)
+  options: ProductOption[]
 
   @Column('text')
   type: string
