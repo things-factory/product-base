@@ -2,6 +2,7 @@ import { Entity, Index, Column, OneToMany, ManyToOne, PrimaryGeneratedColumn } f
 import { Domain, DomainBaseEntity } from '@things-factory/shell'
 import { Company } from '@things-factory/biz-base'
 import { ProductOption } from './product-option'
+import { ProductBatch } from './product-batch'
 
 @Entity('products')
 @Index('ix_product_0', (product: Product) => [product.domain, product.company, product.name], { unique: true })
@@ -30,6 +31,9 @@ export class Product extends DomainBaseEntity {
 
   @Column('text')
   type: string
+
+  @ManyToOne(type => ProductBatch, productBatch => productBatch.products)
+  productBatch: ProductBatch
 
   @Column('text')
   unit: string
