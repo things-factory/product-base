@@ -1,5 +1,7 @@
-import { ProductBatch } from './product-batch'
+import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { NewProductBatch } from './new-product-batch'
+import { ProductBatch } from './product-batch'
+import { ProductBatchList } from './product-batch-list'
 import { ProductBatchPatch } from './product-batch-patch'
 
 export const Mutation = `
@@ -22,8 +24,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  productBatches: [ProductBatch]
+  productBatches(filters: [Filter], pagination: Pagination, sortings: [Sorting])  : ProductBatchList
   productBatch(id: String!): ProductBatch
 `
 
-export const Types = [ProductBatch, NewProductBatch, ProductBatchPatch]
+export const Types = [Filter, Pagination, Sorting, ProductBatch, NewProductBatch, ProductBatchPatch, ProductBatchList]

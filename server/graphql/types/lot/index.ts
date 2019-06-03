@@ -1,6 +1,8 @@
+import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { Lot } from './lot'
-import { NewLot } from './new-lot'
+import { LotList } from './lot-list'
 import { LotPatch } from './lot-patch'
+import { NewLot } from './new-lot'
 
 export const Mutation = `
   createLot (
@@ -22,8 +24,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  lots: [Lot]
+  lots(filters: [Filter], pagination: Pagination, sortings: [Sorting]): LotList
   lot(id: String!): Lot
 `
 
-export const Types = [Lot, NewLot, LotPatch]
+export const Types = [Filter, Pagination, Sorting, Lot, NewLot, LotPatch, LotList]
