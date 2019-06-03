@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
 export const ProductBatchList = gql`
-  input ProductBatchList {
+  type ProductBatchList {
     items: [ProductBatch]
     total: Int
   }

@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
 export const ProductOptionList = gql`
-  input ProductOptionList {
+  type ProductOptionList {
     items: [ProductOption]
     total: Int
   }
