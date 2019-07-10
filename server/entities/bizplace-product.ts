@@ -3,7 +3,7 @@ import { Domain } from '@things-factory/shell'
 import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { Bizplace } from '@things-factory/biz-base'
 
-@Entity('bizplace-products')
+@Entity()
 @Index('ix_bizplace-product_0', (bizplaceProduct: BizplaceProduct) => [bizplaceProduct.domain, bizplaceProduct.name], {
   unique: true
 })

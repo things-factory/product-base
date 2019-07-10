@@ -12,7 +12,7 @@ import {
 } from 'typeorm'
 import { ProductOption } from './product-option'
 
-@Entity('product-option-details')
+@Entity()
 @Index(
   'ix_product-option-detail_0',
   (productOptionDetail: ProductOptionDetail) => [productOptionDetail.domain, productOptionDetail.name],
