@@ -21,10 +21,10 @@ export class ProductBatch {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text')
+  @Column()
   yourName: string
 
   @OneToMany(type => Lot, lot => lot.productBatch)
@@ -33,10 +33,10 @@ export class ProductBatch {
   @Column('float')
   qty: number
 
-  @Column('text')
+  @Column()
   state: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string

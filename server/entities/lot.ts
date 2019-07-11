@@ -12,7 +12,7 @@ export class Lot {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
+  @Column()
   name: string
 
   @ManyToOne(type => ProductBatch, productBatch => productBatch.lots)
@@ -21,10 +21,10 @@ export class Lot {
   @Column('float')
   qty: number
 
-  @Column('text')
+  @Column()
   state: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string

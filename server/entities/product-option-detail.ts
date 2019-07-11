@@ -25,13 +25,13 @@ export class ProductOptionDetail {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
+  @Column()
   name: string
 
   @OneToMany(type => ProductOption, productOption => productOption.details)
   productOption: ProductOption
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string

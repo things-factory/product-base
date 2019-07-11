@@ -23,13 +23,13 @@ export class Product {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
+  @Column()
   company: Company
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text')
+  @Column()
   yourName: string
 
   @ManyToOne(type => Product, product => product.aliases)
@@ -41,13 +41,13 @@ export class Product {
   @OneToMany(type => ProductOption, productOption => productOption.product)
   options: ProductOption[]
 
-  @Column('text')
+  @Column()
   type: string
 
-  @Column('text')
+  @Column()
   unit: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string
