@@ -23,7 +23,7 @@ export class Product {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column()
+  @ManyToOne(type => Company)
   company: Company
 
   @Column()
