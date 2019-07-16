@@ -1,12 +1,17 @@
+import { buildQuery, ListParam } from '@things-factory/shell'
 import { getRepository } from 'typeorm'
 import { ProductBatch } from '../../../entities'
-import { ListParam, buildQuery } from '@things-factory/shell'
 
 export const productBatchesResolver = {
-  async productBatches(_: any, params: ListParam, context: any) {
+  async productBatches(_: any, params: ListParam) {
     const queryBuilder = getRepository(ProductBatch).createQueryBuilder()
     buildQuery(queryBuilder, params)
-    const [items, total] = await queryBuilder.getManyAndCount()
+    const [items, total] = await queryBuilder
+      .leftJoinAndSelect('ProductBatch.domain', 'Domain')
+      .leftJoinAndSelect('ProductBatch.lots', 'Lots')
+      .leftJoinAndSelect('ProductBatch.creator', 'Creator')
+      .leftJoinAndSelect('ProductBatch.updater', 'Updater')
+      .getManyAndCount()
 
     return { items, total }
   }

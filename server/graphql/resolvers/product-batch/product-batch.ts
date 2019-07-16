@@ -2,14 +2,10 @@ import { getRepository } from 'typeorm'
 import { ProductBatch } from '../../../entities'
 
 export const productBatchResolver = {
-  async productBatch(_, { id }, context, info) {
-    const repository = getRepository(ProductBatch)
-
-    return await repository.findOne(
-      { id },
-      {
-        relations: ['productBatchDetails']
-      }
-    )
+  async productBatch(_: any, { name }, context: any) {
+    const repository = getRepository(ProductBatch).findOne({
+      where: { domain: context.domain, name },
+      relations: ['domain', 'lots', 'creator', 'updater']
+    })
   }
 }

@@ -3,10 +3,16 @@ import { getRepository } from 'typeorm'
 import { ProductOption } from '../../../entities'
 
 export const productOptionsResolver = {
-  async productOptions(_: any, params: ListParam, context: any) {
+  async productOptions(_: any, params: ListParam) {
     const queryBuilder = getRepository(ProductOption).createQueryBuilder()
     buildQuery(queryBuilder, params)
-    const [items, total] = await queryBuilder.getManyAndCount()
+    const [items, total] = await queryBuilder
+      .leftJoinAndSelect('ProductOption.domain', 'Domain')
+      .leftJoinAndSelect('ProductOption.product', 'Product')
+      .leftJoinAndSelect('ProductOption.details', 'Details')
+      .leftJoinAndSelect('ProductOption.creator', 'Creator')
+      .leftJoinAndSelect('ProductOption.updater', 'Updater')
+      .getManyAndCount()
 
     return { items, total }
   }

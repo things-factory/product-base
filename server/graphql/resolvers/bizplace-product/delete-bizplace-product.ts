@@ -2,9 +2,7 @@ import { getRepository } from 'typeorm'
 import { BizplaceProduct } from '../../../entities'
 
 export const deleteBizplaceProduct = {
-  async deleteBizplaceProduct(_, { id }) {
-    const repository = getRepository(BizplaceProduct)
-
-    return await repository.delete(id)
+  async deleteBizplaceProduct(_: any, { name }, context: any) {
+    return await getRepository(BizplaceProduct).delete({ domain: context.domain, name })
   }
 }

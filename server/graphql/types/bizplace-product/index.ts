@@ -10,22 +10,22 @@ export const Mutation = `
   ): BizplaceProduct
 
   updateBizplaceProduct (
-    id: String!
+    name: String!
     patch: BizplaceProductPatch!
   ): BizplaceProduct
 
   deleteBizplaceProduct (
-    id: String!
+    name: String!
   ): BizplaceProduct
 
   publishBizplaceProduct (
-    id: String!
+    name: String!
   ): BizplaceProduct
 `
 
 export const Query = `
   bizplaceProducts(filters: [Filter], pagination: Pagination, sortings: [Sorting]): BizplaceProductList
-  bizplaceProduct(id: String!): BizplaceProduct
+  bizplaceProduct(name: String!): BizplaceProduct
 `
 
 export const Types = [

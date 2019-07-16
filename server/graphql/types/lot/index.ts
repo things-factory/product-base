@@ -10,22 +10,22 @@ export const Mutation = `
   ): Lot
 
   updateLot (
-    id: String!
+    name: String!
     patch: LotPatch!
   ): Lot
 
   deleteLot (
-    id: String!
+    name: String!
   ): Lot
 
   publishLot (
-    id: String!
+    name: String!
   ): Lot
 `
 
 export const Query = `
   lots(filters: [Filter], pagination: Pagination, sortings: [Sorting]): LotList
-  lot(id: String!): Lot
+  lot(name: String!): Lot
 `
 
 export const Types = [Filter, Pagination, Sorting, Lot, NewLot, LotPatch, LotList]

@@ -10,22 +10,18 @@ export const Mutation = `
   ): ProductOptionDetail
 
   updateProductOptionDetail (
-    id: String!
+    name: String!
     patch: ProductOptionDetailPatch!
   ): ProductOptionDetail
 
   deleteProductOptionDetail (
-    id: String!
-  ): ProductOptionDetail
-
-  publishProductOptionDetail (
-    id: String!
+    name: String!
   ): ProductOptionDetail
 `
 
 export const Query = `
   productOptionDetails(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductOptionDetailList
-  productOptionDetail(id: String!): ProductOptionDetail
+  productOptionDetail(name: String!): ProductOptionDetail
 `
 
 export const Types = [

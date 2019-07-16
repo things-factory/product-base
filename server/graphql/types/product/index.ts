@@ -10,22 +10,22 @@ export const Mutation = `
   ): Product
 
   updateProduct (
-    id: String!
+    name: String!
     patch: ProductPatch!
   ): Product
 
   deleteProduct (
-    id: String!
+    name: String!
   ): Product
 
   publishProduct (
-    id: String!
+    name: String!
   ): Product
 `
 
 export const Query = `
   products(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
-  product(id: String!): Product
+  product(name: String!): Product
 `
 
 export const Types = [Filter, Pagination, Sorting, Product, NewProduct, ProductPatch, ProductList]

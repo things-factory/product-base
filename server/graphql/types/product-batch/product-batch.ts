@@ -3,9 +3,16 @@ import { gql } from 'apollo-server-koa'
 export const ProductBatch = gql`
   type ProductBatch {
     id: String
-    name: String
     domain: Domain
+    name: String
+    yourName: String
+    lots: [Lot]
+    qty: Float
+    state: String
     description: String
-    commonCodeDetails: CommonCodeDetail
+    creator: User
+    updater: User
+    createdAt: String
+    updatedAt: String
   }
 `
