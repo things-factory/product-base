@@ -17,10 +17,6 @@ export const Mutation = `
   deleteProductBatch (
     name: String!
   ): ProductBatch
-
-  publishProductBatch (
-    name: String!
-  ): ProductBatch
 `
 
 export const Query = `

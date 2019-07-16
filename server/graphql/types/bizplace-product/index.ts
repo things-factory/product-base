@@ -17,10 +17,6 @@ export const Mutation = `
   deleteBizplaceProduct (
     name: String!
   ): BizplaceProduct
-
-  publishBizplaceProduct (
-    name: String!
-  ): BizplaceProduct
 `
 
 export const Query = `

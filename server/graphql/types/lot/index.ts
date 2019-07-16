@@ -17,10 +17,6 @@ export const Mutation = `
   deleteLot (
     name: String!
   ): Lot
-
-  publishLot (
-    name: String!
-  ): Lot
 `
 
 export const Query = `

@@ -17,10 +17,6 @@ export const Mutation = `
   deleteProduct (
     name: String!
   ): Product
-
-  publishProduct (
-    name: String!
-  ): Product
 `
 
 export const Query = `
