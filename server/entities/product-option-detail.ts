@@ -28,7 +28,7 @@ export class ProductOptionDetail {
   @Column()
   name: string
 
-  @OneToMany(type => ProductOption, productOption => productOption.details)
+  @ManyToOne(type => ProductOption, productOption => productOption.details)
   productOption: ProductOption
 
   @Column({
