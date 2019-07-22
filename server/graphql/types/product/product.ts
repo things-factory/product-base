@@ -15,7 +15,7 @@ export const Product = gql`
     description: String
     creator: User
     updater: User
-    createdAt: Date
-    updatedAt: Date
+    createdAt: String
+    updatedAt: String
   }
 `
