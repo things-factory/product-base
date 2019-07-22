@@ -20,6 +20,8 @@ export const Mutation = `
 `
 
 export const Query = `
+  customerProducts(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
+  ownerProducts(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
   products(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
   product(name: String!): Product
 `

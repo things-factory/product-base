@@ -6,6 +6,8 @@ export const Product = gql`
     domain: Domain
     name: String
     yourName: String
+    type: String
+    unit: String
     lots: [Lot]
     qty: Int
     state: String
