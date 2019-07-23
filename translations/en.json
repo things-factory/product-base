@@ -1,9 +1,9 @@
 {
-  "field.your_name": "your_name",
+  "field.your_name": "your name",
   "field.lots": "lots",
-  "field.product_option": "product_option",
+  "field.product_option": "product option",
   "field.company": "company",
-  "field.ref_to": "ref_to",
+  "field.ref_to": "ref to",
   "field.aliases": "aliases",
   "field.options": "options"
 }
