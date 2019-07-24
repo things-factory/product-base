@@ -5,9 +5,9 @@ export const NewProduct = gql`
     company: String!
     name: String!
     yourName: String!
-    refTo: String!
-    aliases: [String]!
-    options: [String]!
+    refTo: String
+    aliases: [String]
+    options: [String]
     type: String!
     unit: String!
     description: String
