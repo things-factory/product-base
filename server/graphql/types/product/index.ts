@@ -24,6 +24,7 @@ export const Query = `
   ownerProducts(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
   products(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
   product(name: String!): Product
+  productById(id: String!): Product
 `
 
 export const Types = [Filter, Pagination, Sorting, Product, NewProduct, ProductPatch, ProductList]

@@ -1,5 +1,6 @@
 import { createProduct } from './create-product'
 import { customerProductsResolver } from './customer-products'
+import { productByIdResolver } from './product-by-id'
 import { deleteProduct } from './delete-product'
 import { ownerProductsResolver } from './owner-products'
 import { productResolver } from './product'
@@ -10,7 +11,8 @@ export const Query = {
   ...productsResolver,
   ...productResolver,
   ...ownerProductsResolver,
-  ...customerProductsResolver
+  ...customerProductsResolver,
+  ...productByIdResolver
 }
 
 export const Mutation = {
