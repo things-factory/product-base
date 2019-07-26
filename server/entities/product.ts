@@ -29,7 +29,9 @@ export class Product {
   @Column()
   name: string
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   yourName: string
 
   @ManyToOne(type => Product, product => product.aliases)
