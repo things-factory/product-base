@@ -13,7 +13,7 @@ export const customerProductsResolver = {
       .leftJoinAndSelect('Product.options', 'Options')
       .leftJoinAndSelect('Product.creator', 'Creator')
       .leftJoinAndSelect('Product.updater', 'Updater')
-      .where('Product.type = :type', { type: 'customer' })
+      .where('Product.type = :type', { type: 'product' })
       .getManyAndCount()
 
     return { items, total }
