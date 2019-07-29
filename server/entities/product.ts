@@ -9,7 +9,8 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  ManyToMany
 } from 'typeorm'
 import { ProductOption } from './product-option'
 
