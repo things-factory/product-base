@@ -3,9 +3,9 @@ import { getRepository } from 'typeorm'
 import { ProductOption } from '../../../entities'
 
 export const productOptionsResolver = {
-  async productOptions(_: any, params: ListParam) {
+  async productOptions(_: any, params: ListParam, context: any) {
     const queryBuilder = getRepository(ProductOption).createQueryBuilder()
-    buildQuery(queryBuilder, params)
+    buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('ProductOption.domain', 'Domain')
       .leftJoinAndSelect('ProductOption.product', 'Product')
