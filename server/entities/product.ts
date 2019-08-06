@@ -1,5 +1,5 @@
 import { User } from '@things-factory/auth-base'
-import { Company } from '@things-factory/biz-base'
+import { Bizplace } from '@things-factory/biz-base'
 import { Domain } from '@things-factory/shell'
 import {
   Column,
@@ -8,15 +8,15 @@ import {
   Index,
   ManyToOne,
   OneToMany,
+  ManyToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  ManyToMany
+  UpdateDateColumn
 } from 'typeorm'
 import { ProductOption } from './product-option'
 
 @Entity('products')
-@Index('ix_product_0', (product: Product) => [product.domain, product.company, product.name], { unique: true })
-@Index('ix_product_1', (product: Product) => [product.domain, product.company, product.refTo])
+@Index('ix_product_0', (product: Product) => [product.domain, product.bizplace, product.name], { unique: true })
+@Index('ix_product_1', (product: Product) => [product.domain, product.bizplace, product.refTo])
 export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -24,8 +24,8 @@ export class Product {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @ManyToOne(type => Company)
-  company: Company
+  @ManyToMany(type => Bizplace)
+  bizplace: Bizplace
 
   @Column()
   name: string

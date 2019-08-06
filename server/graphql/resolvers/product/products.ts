@@ -7,7 +7,7 @@ export const productsResolver = {
     const queryBuilder = getRepository(Product).createQueryBuilder()
     buildQuery(queryBuilder, params)
     const [items, total] = await queryBuilder
-      .leftJoinAndSelect('Product.company', 'Company')
+      .leftJoinAndSelect('Product.bizplace', 'Bizplace')
       .leftJoinAndSelect('Product.refTo', 'RefTo')
       .leftJoinAndSelect('Product.aliases', 'Aliases')
       .leftJoinAndSelect('Product.options', 'Options')

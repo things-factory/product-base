@@ -5,7 +5,7 @@ export const productByIdResolver = {
   async productById(_: any, { id }) {
     return await getRepository(Product).findOne({
       where: { id },
-      relations: ['domain', 'company', 'refTo', 'aliases', 'options', 'creator', 'updater']
+      relations: ['domain', 'bizplace', 'refTo', 'aliases', 'options', 'creator', 'updater']
     })
   }
 }
