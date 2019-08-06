@@ -7,9 +7,11 @@ export const ProductPatch = gql`
     yourName: String
     refTo: String
     aliases: [String]
+    productBatch: [String]
     options: [String]
     type: String
     unit: String
+    weight: Number
     description: String
   }
 `

@@ -6,7 +6,8 @@ export const ProductBatchPatch = gql`
     yourName: String
     lots: [String]
     qty: Float
-    state: String
+    status: String
+    product: String
     description: String
   }
 `

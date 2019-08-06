@@ -10,8 +10,10 @@ export const Product = gql`
     refTo: Product
     aliases: [Product]
     options: [ProductOption]
+    productBatch: ProductBatch
     type: String
     unit: String
+    weight: Number
     description: String
     creator: User
     updater: User

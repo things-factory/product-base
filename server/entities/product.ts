@@ -13,6 +13,7 @@ import {
   UpdateDateColumn
 } from 'typeorm'
 import { ProductOption } from './product-option'
+import { ProductBatch } from './product-batch'
 
 @Entity('products')
 @Index('ix_product_0', (product: Product) => [product.domain, product.bizplace, product.name], { unique: true })
@@ -44,10 +45,20 @@ export class Product {
   @OneToMany(type => ProductOption, productOption => productOption.product)
   options: ProductOption[]
 
+  @OneToMany(type => ProductBatch, productBatch => productBatch.product)
+  batches: ProductBatch
+
   @Column()
   type: string
 
-  @Column()
+  @Column('float', {
+    nullable: true
+  })
+  weight: string
+
+  @Column({
+    nullable: true
+  })
   unit: string
 
   @Column({

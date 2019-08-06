@@ -8,6 +8,7 @@ export const productBatchesResolver = {
     buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('ProductBatch.domain', 'Domain')
+      .leftJoinAndSelect('ProductBatch.product', 'Product')
       .leftJoinAndSelect('ProductBatch.lots', 'Lots')
       .leftJoinAndSelect('ProductBatch.creator', 'Creator')
       .leftJoinAndSelect('ProductBatch.updater', 'Updater')

@@ -8,6 +8,7 @@ export const productsResolver = {
     buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Product.bizplace', 'Bizplace')
+      .leftJoinAndSelect('Product.productBatch', 'ProductBatch')
       .leftJoinAndSelect('Product.refTo', 'RefTo')
       .leftJoinAndSelect('Product.aliases', 'Aliases')
       .leftJoinAndSelect('Product.options', 'Options')

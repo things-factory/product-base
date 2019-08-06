@@ -8,7 +8,8 @@ export const ProductBatch = gql`
     yourName: String
     lots: [Lot]
     qty: Float
-    state: String
+    status: String
+    product: Product
     description: String
     creator: User
     updater: User
