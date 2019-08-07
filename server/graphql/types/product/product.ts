@@ -13,7 +13,7 @@ export const Product = gql`
     productBatch: ProductBatch
     type: String
     unit: String
-    weight: Number
+    weight: Int
     description: String
     creator: User
     updater: User

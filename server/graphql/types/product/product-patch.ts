@@ -11,7 +11,7 @@ export const ProductPatch = gql`
     options: [String]
     type: String
     unit: String
-    weight: Number
+    weight: Int
     description: String
   }
 `
