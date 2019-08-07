@@ -25,7 +25,7 @@ export class Product {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @ManyToMany(type => Bizplace)
+  @ManyToOne(type => Bizplace)
   bizplace: Bizplace
 
   @Column()
