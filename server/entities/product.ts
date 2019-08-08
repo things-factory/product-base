@@ -8,12 +8,11 @@ import {
   Index,
   ManyToOne,
   OneToMany,
-  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm'
-import { ProductOption } from './product-option'
 import { ProductBatch } from './product-batch'
+import { ProductOption } from './product-option'
 
 @Entity('products')
 @Index('ix_product_0', (product: Product) => [product.domain, product.bizplace, product.name], { unique: true })
@@ -38,6 +37,9 @@ export class Product {
 
   @ManyToOne(type => Product, product => product.aliases)
   refTo: Product
+
+  @Column()
+  collectionId: string
 
   @OneToMany(type => Product, product => product.refTo)
   aliases: Product[]
