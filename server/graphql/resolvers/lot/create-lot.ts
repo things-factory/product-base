@@ -6,8 +6,8 @@ export const createLot = {
     return await getRepository(Lot).save({
       domain: context.domain,
       ...lot,
-      creatorId: context.state.user.id,
-      updaterId: context.state.user.id
+      creator: context.state.user,
+      updater: context.state.user
     })
   }
 }
