@@ -14,15 +14,26 @@ import { Product } from './product'
 import { ProductOptionDetail } from './product-option-detail'
 
 @Entity()
-@Index('ix_product-option_0', (productOption: ProductOption) => [productOption.domain, productOption.name], {
-  unique: true
-})
+@Index(
+  'ix_product-option_0',
+  (productOption: ProductOption) => [productOption.domain, productOption.product, productOption.name],
+  {
+    unique: true
+  }
+)
 export class ProductOption {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @ManyToOne(type => Domain)
+  @ManyToOne(type => Domain, {
+    nullable: false
+  })
   domain: Domain
+
+  @ManyToOne(type => Product, {
+    nullable: false
+  })
+  product: Product
 
   @Column()
   name: string
@@ -32,11 +43,8 @@ export class ProductOption {
   })
   description: string
 
-  @ManyToOne(type => Product)
-  product: Product
-
   @OneToMany(type => ProductOptionDetail, productOptionDetail => productOptionDetail.productOption)
-  details: ProductOptionDetail[]
+  productOptionDetails: ProductOptionDetail[]
 
   @ManyToOne(type => User, {
     nullable: true

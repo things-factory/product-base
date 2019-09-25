@@ -11,20 +11,22 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm'
-import { ProductBatch } from './product-batch'
 import { ProductOption } from './product-option'
 
 @Entity('products')
 @Index('ix_product_0', (product: Product) => [product.domain, product.bizplace, product.name], { unique: true })
-@Index('ix_product_1', (product: Product) => [product.domain, product.bizplace, product.refTo])
 export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @ManyToOne(type => Domain)
+  @ManyToOne(type => Domain, {
+    nullable: false
+  })
   domain: Domain
 
-  @ManyToOne(type => Bizplace)
+  @ManyToOne(type => Bizplace, {
+    nullable: false
+  })
   bizplace: Bizplace
 
   @Column()
@@ -33,40 +35,13 @@ export class Product {
   @Column({
     nullable: true
   })
-  yourName: string
-
-  @ManyToOne(type => Product, product => product.aliases)
-  refTo: Product
-
-  @Column()
-  collectionId: string
-
-  @OneToMany(type => Product, product => product.refTo)
-  aliases: Product[]
+  description: string
 
   @OneToMany(type => ProductOption, productOption => productOption.product)
-  options: ProductOption[]
-
-  @OneToMany(type => ProductBatch, productBatch => productBatch.product)
-  batches: ProductBatch
+  productOptions: ProductOption[]
 
   @Column()
   type: string
-
-  @Column('float', {
-    nullable: true
-  })
-  weight: string
-
-  @Column({
-    nullable: true
-  })
-  unit: string
-
-  @Column({
-    nullable: true
-  })
-  description: string
 
   @ManyToOne(type => User, {
     nullable: true

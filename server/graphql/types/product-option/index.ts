@@ -1,4 +1,3 @@
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { NewProductOption } from './new-product-option'
 import { ProductOption } from './product-option'
 import { ProductOptionList } from './product-option-list'
@@ -10,26 +9,29 @@ export const Mutation = `
   ): ProductOption
 
   updateProductOption (
-    id: String!
+    product: ObjectRef!
+    name: String!
     patch: ProductOptionPatch!
   ): ProductOption
 
+  updateMultipleProductOption (
+    patches: [ProductOptionPatch]!
+  ): [ProductOption]
+
   deleteProductOption (
-    id: String!
-  ): ProductOption
+    product: ObjectRef!
+    name: String!
+  ): Boolean
+
+  deleteProductOptions (
+    product: ObjectRef!
+    names: [String]!
+  ): Boolean
 `
 
 export const Query = `
   productOptions(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductOptionList
-  productOption(id: String!): ProductOption
+  productOption(product: ObjectRef!, name: String!): ProductOption
 `
 
-export const Types = [
-  Filter,
-  Pagination,
-  Sorting,
-  ProductOption,
-  NewProductOption,
-  ProductOptionPatch,
-  ProductOptionList
-]
+export const Types = [ProductOption, NewProductOption, ProductOptionPatch, ProductOptionList]

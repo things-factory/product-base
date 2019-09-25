@@ -1,4 +1,3 @@
-import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { NewProduct } from './new-product'
 import { Product } from './product'
 import { ProductList } from './product-list'
@@ -7,24 +6,29 @@ import { ProductPatch } from './product-patch'
 export const Mutation = `
   createProduct (
     product: NewProduct!
-  ): Product
+  ): Product @priviledge(category: "order", priviledge: "mutation")
 
   updateProduct (
     name: String!
     patch: ProductPatch!
-  ): Product
+  ): Product @priviledge(category: "order", priviledge: "mutation")
+
+  updateMultipleProduct (
+    patches: [ProductPatch]!
+  ): [Product] @priviledge(category: "order", priviledge: "mutation")
 
   deleteProduct (
     name: String!
-  ): Product
+  ): Boolean @priviledge(category: "order", priviledge: "mutation")
+
+  deleteProducts (
+    names: [String]!
+  ): Boolean @priviledge(category: "order", priviledge: "mutation")
 `
 
 export const Query = `
-  customerProducts(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
-  ownerProducts(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
-  products(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList
-  product(name: String!): Product
-  productById(id: String!): Product
+  products(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList @priviledge(category: "order", priviledge: "query")
+  product(name: String!): Product @priviledge(category: "order", priviledge: "query")
 `
 
-export const Types = [Filter, Pagination, Sorting, Product, NewProduct, ProductPatch, ProductList]
+export const Types = [Product, NewProduct, ProductPatch, ProductList]
