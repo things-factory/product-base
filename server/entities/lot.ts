@@ -18,7 +18,7 @@ export class Lot {
   @ManyToOne(type => ProductBatch, productBatch => productBatch.lots)
   productBatch: ProductBatch
 
-  @Column('decimal')
+  @Column('float')
   qty: number
 
   @Column()

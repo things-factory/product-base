@@ -34,7 +34,7 @@ export class ProductBatch {
   @OneToMany(type => Lot, lot => lot.productBatch)
   lots: Lot[]
 
-  @Column('decimal')
+  @Column('float')
   qty: number
 
   @Column()
