@@ -7,6 +7,7 @@ export const Product = gql`
     bizplace: Bizplace
     name: String
     description: String
+    productRef: Product
     productOptions: [ProductOption]
     type: String
     creator: User

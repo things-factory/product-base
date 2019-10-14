@@ -12,6 +12,9 @@ export const updateMultipleProduct = {
       for (let i = 0; i < _createRecords.length; i++) {
         const newRecord = _createRecords[i]
 
+        if (newRecord.productRef && newRecord.productRef.id)
+          newRecord.productRef = await getRepository(Product).findOne(newRecord.productRef.id)
+
         const result = await productRepo.save({
           ...newRecord,
           domain: context.state.domain,
@@ -28,6 +31,8 @@ export const updateMultipleProduct = {
       for (let i = 0; i < _updateRecords.length; i++) {
         const newRecord = _updateRecords[i]
         const product = await productRepo.findOne(newRecord.id)
+        if (newRecord.productRef && newRecord.productRef.id)
+          product.productRef = await getRepository(Product).findOne(newRecord.productRef.id)
 
         const result = await productRepo.save({
           ...product,

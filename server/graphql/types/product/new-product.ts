@@ -5,6 +5,7 @@ export const NewProduct = gql`
     bizplace: ObjectRef!
     name: String!
     description: String
+    productRef: ObjectRef
     productOptions: [ObjectRef]
     batches: [ObjectRef]
     type: String
