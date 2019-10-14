@@ -37,6 +37,9 @@ export class Product {
   })
   description: string
 
+  @ManyToOne(type => Product)
+  refProduct: Product
+
   @OneToMany(type => ProductOption, productOption => productOption.product)
   productOptions: ProductOption[]
 
