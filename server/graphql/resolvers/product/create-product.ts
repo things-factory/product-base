@@ -8,7 +8,7 @@ export const createProduct = {
     return await getRepository(Product).save({
       ...product,
       domain: context.state.domain,
-      bizplace: context.state.bizplaces[0],
+      bizplace: context.state.mainBizplace,
       creator: context.state.user,
       updater: context.state.user
     })
