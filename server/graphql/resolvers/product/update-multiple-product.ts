@@ -32,7 +32,7 @@ export const updateMultipleProduct = {
         const newRecord = _updateRecords[i]
         const product = await productRepo.findOne(newRecord.id)
         if (newRecord.productRef && newRecord.productRef.id)
-          product.productRef = await getRepository(Product).findOne(newRecord.productRef.id)
+          newRecord.productRef = await getRepository(Product).findOne(newRecord.productRef.id)
 
         const result = await productRepo.save({
           ...product,
