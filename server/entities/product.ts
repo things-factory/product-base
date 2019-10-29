@@ -14,7 +14,13 @@ import {
 import { ProductOption } from './product-option'
 
 @Entity('products')
-@Index('ix_product_0', (product: Product) => [product.domain, product.bizplace], { unique: true })
+@Index(
+  'ix_product_0',
+  (product: Product) => [product.domain, product.bizplace, product.name, product.description, product.weight],
+  {
+    unique: true
+  }
+)
 export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string
