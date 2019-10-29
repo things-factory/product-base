@@ -46,6 +46,9 @@ export class Product {
   @Column()
   type: string
 
+  @Column()
+  unit: string
+
   @Column('float')
   weight: number
 
