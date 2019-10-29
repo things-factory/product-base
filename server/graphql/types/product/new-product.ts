@@ -6,6 +6,7 @@ export const NewProduct = gql`
     name: String!
     description: String
     productRef: ObjectRef
+    weight: Float
     productOptions: [ObjectRef]
     batches: [ObjectRef]
     type: String

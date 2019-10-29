@@ -46,6 +46,9 @@ export class Product {
   @Column()
   type: string
 
+  @Column('float')
+  weight: number
+
   @ManyToOne(type => User, {
     nullable: true
   })
