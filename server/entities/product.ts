@@ -46,10 +46,13 @@ export class Product {
   @Column()
   type: string
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   unit: string
 
-  @Column('float')
+  @Column('float', {
+    nullable: true
   weight: number
 
   @ManyToOne(type => User, {

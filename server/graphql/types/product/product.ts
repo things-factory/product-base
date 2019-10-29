@@ -9,6 +9,7 @@ export const Product = gql`
     description: String
     productRef: Product
     weight: Float
+    unit: String
     productOptions: [ProductOption]
     type: String
     creator: User

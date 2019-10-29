@@ -7,6 +7,7 @@ export const ProductPatch = gql`
     description: String
     productRef: ObjectRef
     weight: Float
+    unit: String
     productOptions: [ObjectRef]
     batches: [ObjectRef]
     type: String
