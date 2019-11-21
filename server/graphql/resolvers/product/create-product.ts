@@ -1,3 +1,4 @@
+import { getMyBizplace } from '@things-factory/biz-base'
 import { getRepository } from 'typeorm'
 import { Product } from '../../../entities'
 
@@ -8,7 +9,7 @@ export const createProduct = {
     return await getRepository(Product).save({
       ...product,
       domain: context.state.domain,
-      bizplace: context.state.mainBizplace,
+      bizplace: await getMyBizplace(context.state.user),
       creator: context.state.user,
       updater: context.state.user
     })
