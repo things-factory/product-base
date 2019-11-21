@@ -9,7 +9,7 @@ export const Mutation = `
   ): Product @priviledge(category: "order", priviledge: "mutation")
 
   updateProduct (
-    name: String!
+    id: String!
     patch: ProductPatch!
   ): Product @priviledge(category: "order", priviledge: "mutation")
 
@@ -18,11 +18,11 @@ export const Mutation = `
   ): [Product] @priviledge(category: "order", priviledge: "mutation")
 
   deleteProduct (
-    name: String!
+    id: String!
   ): Boolean @priviledge(category: "order", priviledge: "mutation")
 
   deleteProducts (
-    names: [String]!
+    ids: [String]!
   ): Boolean @priviledge(category: "order", priviledge: "mutation")
 `
 

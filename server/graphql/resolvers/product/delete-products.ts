@@ -1,12 +1,12 @@
-import { Bizplace } from '@things-factory/biz-base'
+import { getPermiitedBizplaceIds } from '@things-factory/biz-base'
 import { getRepository, In } from 'typeorm'
 import { Product } from '../../../entities'
 
 export const deleteProducts = {
-  async deleteProducts(_: any, { names }, context: any) {
+  async deleteProducts(_: any, { ids }, context: any) {
     await getRepository(Product).delete({
-      name: In(names),
-      bizplace: In(context.state.bizplaces.map((bizplace: Bizplace) => bizplace.id))
+      id: In(ids),
+      bizplace: In(await getPermiitedBizplaceIds(context.state.domain, context.state.user))
     })
 
     return true
