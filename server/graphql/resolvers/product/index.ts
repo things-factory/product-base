@@ -1,10 +1,10 @@
-import { createProduct } from './create-product'
-import { deleteProduct } from './delete-product'
-import { deleteProducts } from './delete-products'
+import { createProduct, createProductResolver } from './create-product'
+import { deleteProduct, deleteProductResolver } from './delete-product'
+import { deleteProducts, deleteProductsResolver } from './delete-products'
 import { productResolver } from './product'
 import { productsResolver } from './products'
 import { updateMultipleProduct } from './update-multiple-product'
-import { updateProduct } from './update-product'
+import { updateProduct, updateProductResolver } from './update-product'
 
 export const Query = {
   ...productsResolver,
@@ -12,9 +12,11 @@ export const Query = {
 }
 
 export const Mutation = {
-  ...updateProduct,
-  ...createProduct,
-  ...deleteProduct,
-  ...deleteProducts,
+  ...updateProductResolver,
+  ...createProductResolver,
+  ...deleteProductResolver,
+  ...deleteProductsResolver,
   ...updateMultipleProduct
 }
+
+export { createProduct, deleteProducts, updateProduct, deleteProduct }
