@@ -5,7 +5,7 @@ import { updateProduct } from './update-product'
 
 export const updateMultipleProduct = {
   async updateMultipleProduct(_: any, { patches }, context: any): Promise<any> {
-    getManager().transaction(async (trxMgr: EntityManager) => {
+    return await getManager().transaction(async (trxMgr: EntityManager) => {
       let results = []
       const _createRecords = patches.filter((patch: any) => patch.cuFlag.toUpperCase() === '+')
       const _updateRecords = patches.filter((patch: any) => patch.cuFlag.toUpperCase() === 'M')
@@ -14,7 +14,7 @@ export const updateMultipleProduct = {
         for (let i = 0; i < _createRecords.length; i++) {
           const patch: Product = _createRecords[i]
           const result = await createProduct(patch, context.state.domain, context.state.user, trxMgr)
-          results.push({ result, cuFlag: '+' })
+          results.push({ ...result, cuFlag: '+' })
         }
       }
 
