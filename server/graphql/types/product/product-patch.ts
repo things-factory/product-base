@@ -21,5 +21,6 @@ export const ProductPatch = gql`
     auxValue2: Float
     auxUnit3: String
     auxValue3: Float
+    cuFlag: String
   }
 `
