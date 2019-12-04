@@ -18,11 +18,11 @@ export const Product = gql`
     depth: Float
     height: Float
     auxUnit1: String
-    auxValue1: Float
+    auxValue1: String
     auxUnit2: String
-    auxValue2: Float
+    auxValue2: String
     auxUnit3: String
-    auxValue3: Float
+    auxValue3: String
     creator: User
     updater: User
     createdAt: String

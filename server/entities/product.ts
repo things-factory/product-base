@@ -75,20 +75,20 @@ export class Product {
   @Column({ nullable: true })
   auxUnit1: string
 
-  @Column('float', { nullable: true })
-  auxValue1: number
+  @Column({ nullable: true })
+  auxValue1: string
 
   @Column({ nullable: true })
   auxUnit2: string
 
-  @Column('float', { nullable: true })
-  auxValue2: number
+  @Column({ nullable: true })
+  auxValue2: string
 
   @Column({ nullable: true })
   auxUnit3: string
 
-  @Column('float', { nullable: true })
-  auxValue3: number
+  @Column({ nullable: true })
+  auxValue3: string
 
   @ManyToOne(type => User, { nullable: true })
   creator: User
