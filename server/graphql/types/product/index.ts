@@ -28,6 +28,7 @@ export const Mutation = `
 
 export const Query = `
   products(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList @priviledge(category: "order", priviledge: "query")
+  productsByBizplace(filters: [Filter], pagination: Pagination, sortings: [Sorting]): ProductList @priviledge(category: "order", priviledge: "query")
   product(name: String!): Product @priviledge(category: "order", priviledge: "query")
 `
 
