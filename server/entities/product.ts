@@ -52,16 +52,16 @@ export class Product {
   type: string
 
   @Column({ nullable: true })
-  weight_unit: string
+  weightUnit: string
 
   @Column('float', { nullable: true })
   weight: number
 
   @Column('float', { nullable: true })
-  weight_ratio: number
+  weightRatio: number
 
   @Column({ nullable: true })
-  length_unit: string
+  lengthUnit: string
 
   @Column('float', { nullable: true })
   width: number
@@ -73,22 +73,22 @@ export class Product {
   height: number
 
   @Column({ nullable: true })
-  aux_unit_1: string
+  auxUnit1: string
 
   @Column('float', { nullable: true })
-  aux_value_1: number
+  auxValue1: number
 
   @Column({ nullable: true })
-  aux_unit_2: string
+  auxUnit2: string
 
   @Column('float', { nullable: true })
-  aux_value_2: number
+  auxValue2: number
 
   @Column({ nullable: true })
-  aux_unit_3: string
+  auxUnit3: string
 
   @Column('float', { nullable: true })
-  aux_value_3: number
+  auxValue3: number
 
   @ManyToOne(type => User, { nullable: true })
   creator: User
