@@ -10,6 +10,7 @@ export const Product = gql`
     productRef: Product
     productOptions: [ProductOption]
     type: String
+    expirationPeriod: Int
     weightUnit: String
     weight: Float
     weightRatio: Float

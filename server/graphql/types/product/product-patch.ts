@@ -8,6 +8,7 @@ export const ProductPatch = gql`
     productRef: ObjectRef
     productOptions: [ObjectRef]
     type: String
+    expirationPeriod: Int
     weightUnit: String
     weight: Float
     weightRatio: Float

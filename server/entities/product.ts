@@ -52,6 +52,9 @@ export class Product {
   type: string
 
   @Column({ nullable: true })
+  expirationPeriod: number
+
+  @Column({ nullable: true })
   weightUnit: string
 
   @Column('float', { nullable: true })
