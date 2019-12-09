@@ -46,7 +46,10 @@ export class Product {
   @ManyToOne(type => Product)
   productRef: Product
 
-  @OneToMany(type => ProductOption, productOption => productOption.product)
+  @OneToMany(
+    type => ProductOption,
+    productOption => productOption.product
+  )
   productOptions: ProductOption[]
 
   @Column()
@@ -61,6 +64,11 @@ export class Product {
     nullable: true
   })
   weight: number
+
+  @Column({
+    default: 'ACTIVE'
+  })
+  dataStatus: string
 
   @ManyToOne(type => User, {
     nullable: true
