@@ -1,15 +1,25 @@
-import { gql } from 'apollo-server-koa'
+import gql from 'graphql-tag'
 
 export const NewProduct = gql`
   input NewProduct {
-    bizplace: ObjectRef
     name: String!
     description: String
     productRef: ObjectRef
-    unit: String
-    weight: Float
     productOptions: [ObjectRef]
-    batches: [ObjectRef]
     type: String
+    expirationPeriod: Int
+    weightUnit: String
+    weight: Float
+    weightRatio: Float
+    lengthUnit: String
+    width: Float
+    depth: Float
+    height: Float
+    auxUnit1: String
+    auxValue1: String
+    auxUnit2: String
+    auxValue2: String
+    auxUnit3: String
+    auxValue3: String
   }
 `

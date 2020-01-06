@@ -17,9 +17,7 @@ import { ProductOption } from './product-option'
 @Index(
   'ix_product_0',
   (product: Product) => [product.domain, product.bizplace, product.name, product.description, product.weight],
-  {
-    unique: true
-  }
+  { unique: true }
 )
 export class Product {
   @PrimaryGeneratedColumn('uuid')
@@ -38,9 +36,7 @@ export class Product {
   @Column()
   name: string
 
-  @Column({
-    nullable: true
-  })
+  @Column({ nullable: true })
   description: string
 
   @ManyToOne(type => Product)
@@ -55,29 +51,52 @@ export class Product {
   @Column()
   type: string
 
-  @Column({
-    nullable: true
-  })
-  unit: string
+  @Column({ nullable: true })
+  expirationPeriod: number
 
-  @Column('float', {
-    nullable: true
-  })
+  @Column({ nullable: true })
+  weightUnit: string
+
+  @Column('float', { nullable: true })
   weight: number
 
-  @Column({
-    default: 'ACTIVE'
-  })
-  dataStatus: string
+  @Column('float', { nullable: true })
+  weightRatio: number
 
-  @ManyToOne(type => User, {
-    nullable: true
-  })
+  @Column({ nullable: true })
+  lengthUnit: string
+
+  @Column('float', { nullable: true })
+  width: number
+
+  @Column('float', { nullable: true })
+  depth: number
+
+  @Column('float', { nullable: true })
+  height: number
+
+  @Column({ nullable: true })
+  auxUnit1: string
+
+  @Column({ nullable: true })
+  auxValue1: string
+
+  @Column({ nullable: true })
+  auxUnit2: string
+
+  @Column({ nullable: true })
+  auxValue2: string
+
+  @Column({ nullable: true })
+  auxUnit3: string
+
+  @Column({ nullable: true })
+  auxValue3: string
+
+  @ManyToOne(type => User, { nullable: true })
   creator: User
 
-  @ManyToOne(type => User, {
-    nullable: true
-  })
+  @ManyToOne(type => User, { nullable: true })
   updater: User
 
   @CreateDateColumn()

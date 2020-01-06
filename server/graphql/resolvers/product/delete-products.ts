@@ -1,14 +1,13 @@
-import { Bizplace } from '@things-factory/biz-base'
-import { getRepository, In } from 'typeorm'
+import { EntityManager, getRepository } from 'typeorm'
 import { Product } from '../../../entities'
 
-export const deleteProducts = {
-  async deleteProducts(_: any, { names }, context: any) {
-    await getRepository(Product).delete({
-      name: In(names),
-      bizplace: In(context.state.bizplaces.map((bizplace: Bizplace) => bizplace.id))
-    })
-
-    return true
+export const deleteProductsResolver = {
+  async deleteProducts(_: any, { ids }, _context: any) {
+    deleteProducts(ids)
   }
+}
+
+export async function deleteProducts(ids: string[], trxMgr?: EntityManager) {
+  const repository = trxMgr ? trxMgr.getRepository(Product) : getRepository(Product)
+  return await repository.delete(ids)
 }

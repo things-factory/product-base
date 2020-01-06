@@ -1,18 +1,27 @@
-import { Bizplace } from '@things-factory/biz-base'
-import { getRepository, In } from 'typeorm'
+import { Domain } from '@things-factory/shell'
+import { EntityManager, getRepository, Repository } from 'typeorm'
 import { Product } from '../../../entities'
 
-export const updateProduct = {
-  async updateProduct(_: any, { name, patch }, context: any) {
-    const product = await getRepository(Product).findOne({
-      domain: context.state.domain,
-      name,
-      bizplace: In(context.state.bizplaces.map((bizplace: Bizplace) => bizplace.id))
-    })
-    return await getRepository(Product).save({
-      ...product,
-      ...patch,
-      updater: context.state.user
-    })
+export const updateProductResolver = {
+  async updateProduct(_: any, { id, patch }, context: any) {
+    return await updateProduct(id, patch, context.state.domain, context.state.user)
   }
+}
+
+export async function updateProduct(id: string, patch: Product, domain: Domain, user: any, trxMgr?: EntityManager) {
+  const repository: Repository<Product> = trxMgr ? trxMgr.getRepository(Product) : getRepository(Product)
+  const product = await repository.findOne({
+    domain,
+    id
+  })
+
+  if (patch.productRef && patch.productRef.id) {
+    patch.productRef = await repository.findOne(patch.productRef.id)
+  }
+
+  return repository.save({
+    ...product,
+    ...patch,
+    updater: user
+  })
 }
