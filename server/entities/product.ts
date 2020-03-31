@@ -42,12 +42,6 @@ export class Product {
   @ManyToOne(type => Product)
   productRef: Product
 
-  @OneToMany(
-    type => ProductOption,
-    productOption => productOption.product
-  )
-  productOptions: ProductOption[]
-
   @Column()
   type: string
 

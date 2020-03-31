@@ -8,7 +8,6 @@ export const Product = gql`
     name: String
     description: String
     productRef: Product
-    productOptions: [ProductOption]
     type: String
     expirationPeriod: Int
     weightUnit: String

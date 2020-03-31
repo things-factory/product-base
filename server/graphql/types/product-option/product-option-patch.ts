@@ -4,8 +4,7 @@ export const ProductOptionPatch = gql`
   input ProductOptionPatch {
     id: String
     name: String
-    product: ObjectRef
-    productOptionDetails: [ObjectRef]
+    productOptionValues: [ObjectRef]
     description: String
     cuFlag: String
   }

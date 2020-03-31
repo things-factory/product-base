@@ -1,6 +1,6 @@
 import * as Product from './product'
 import * as ProductOption from './product-option'
-import * as ProductOptionDetail from './product-option-detail'
+import * as ProductOptionDetail from './product-option-value'
 import * as ProductBatch from './product-batch'
 import * as Lot from './lot'
 

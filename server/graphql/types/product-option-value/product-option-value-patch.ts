@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
-export const ProductOptionDetailPatch = gql`
-  input ProductOptionDetailPatch {
+export const ProductOptionValuePatch = gql`
+  input ProductOptionValuePatch {
     id: String
     name: String
     productOption: ObjectRef

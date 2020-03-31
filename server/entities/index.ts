@@ -1,9 +1,9 @@
 import { Product } from './product'
 import { ProductOption } from './product-option'
-import { ProductOptionDetail } from './product-option-detail'
+import { ProductOptionValue } from './product-option-value'
 import { ProductBatch } from './product-batch'
 import { Lot } from './lot'
 
-export const entities = [Product, ProductOption, ProductOptionDetail, ProductBatch, Lot]
+export const entities = [Product, ProductOption, ProductOptionValue, ProductBatch, Lot]
 
-export { Product, ProductOption, ProductOptionDetail, ProductBatch, Lot }
+export { Product, ProductOption, ProductOptionValue, ProductBatch, Lot }

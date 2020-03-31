@@ -11,16 +11,12 @@ import {
   UpdateDateColumn
 } from 'typeorm'
 import { Product } from './product'
-import { ProductOptionDetail } from './product-option-detail'
+import { ProductOptionValue } from './product-option-value'
 
 @Entity()
-@Index(
-  'ix_product-option_0',
-  (productOption: ProductOption) => [productOption.domain, productOption.product, productOption.name],
-  {
-    unique: true
-  }
-)
+@Index('ix_product-option_0', (productOption: ProductOption) => [productOption.domain, productOption.id], {
+  unique: true
+})
 export class ProductOption {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -30,11 +26,6 @@ export class ProductOption {
   })
   domain: Domain
 
-  @ManyToOne(type => Product, {
-    nullable: false
-  })
-  product: Product
-
   @Column()
   name: string
 
@@ -43,8 +34,11 @@ export class ProductOption {
   })
   description: string
 
-  @OneToMany(type => ProductOptionDetail, productOptionDetail => productOptionDetail.productOption)
-  productOptionDetails: ProductOptionDetail[]
+  @OneToMany(
+    type => ProductOptionValue,
+    productOptionValue => productOptionValue.productOption
+  )
+  productOptionValues: ProductOptionValue[]
 
   @ManyToOne(type => User, {
     nullable: true

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
-export const ProductOptionDetail = gql`
-  type ProductOptionDetail {
+export const ProductOptionValue = gql`
+  type ProductOptionValue {
     id: String
     domain: Domain
     name: String

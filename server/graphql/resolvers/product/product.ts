@@ -10,7 +10,7 @@ export const productResolver = {
         name,
         bizplace: In(await getPermittedBizplaceIds(context.state.domain, context.state.user))
       },
-      relations: ['domain', 'bizplace', 'productRef', 'productOptions', 'creator', 'updater']
+      relations: ['domain', 'bizplace', 'productRef', 'creator', 'updater']
     })
   }
 }

@@ -5,7 +5,6 @@ export const NewProduct = gql`
     name: String!
     description: String
     productRef: ObjectRef
-    productOptions: [ObjectRef]
     type: String
     expirationPeriod: Int
     weightUnit: String
