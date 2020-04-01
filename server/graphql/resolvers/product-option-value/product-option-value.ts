@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm'
 import { ProductOption, ProductOptionValue } from '../../../entities'
 
 export const ProductOptionValueResolver = {
-  async ProductOptionValue(_: any, { productOption, name }, context: any) {
+  async productOptionValue(_: any, { productOption, name }, context: any) {
     return await getRepository(ProductOptionValue).findOne({
       where: {
         domain: context.state.domain,

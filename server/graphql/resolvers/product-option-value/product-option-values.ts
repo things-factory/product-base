@@ -4,7 +4,7 @@ import { getRepository, In } from 'typeorm'
 import { ProductOptionValue } from '../../../entities'
 
 export const ProductOptionValuesResolver = {
-  async ProductOptionValues(_: any, params: ListParam, context: any) {
+  async productOptionValues(_: any, params: ListParam, context: any) {
     const convertedParams = convertListParams(params)
     const userBizplaces = await getUserBizplaces(context)
     convertedParams.where.bizplace = In(userBizplaces.map(userBizplace => userBizplace.id))
