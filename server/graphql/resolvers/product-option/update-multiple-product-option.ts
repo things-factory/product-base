@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm'
-import { Product, ProductOption } from '../../../entities'
+import { ProductOption } from '../../../entities'
 
 export const updateMultipleProductOption = {
   async updateMultipleProductOption(_: any, { patches }, context: any) {
@@ -15,7 +15,6 @@ export const updateMultipleProductOption = {
         const result = await productOptionRepo.save({
           ...newRecord,
           domain: context.state.domain,
-          product: await getRepository(Product).findOne(newRecord.product.id),
           creator: context.state.user,
           updater: context.state.user
         })
@@ -28,10 +27,6 @@ export const updateMultipleProductOption = {
       for (let i = 0; i < _updateRecords.length; i++) {
         const newRecord = _updateRecords[i]
         const productOption = await productOptionRepo.findOne(newRecord.id)
-
-        if (newRecord.product && newRecord.product.id) {
-          newRecord.product = await getRepository(Product).findOne(newRecord.product.id)
-        }
 
         const result = await productOptionRepo.save({
           ...productOption,
