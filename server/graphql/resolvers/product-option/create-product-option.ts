@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm'
-import { Product, ProductOption } from '../../../entities'
+import { ProductOption } from '../../../entities'
 
 export const createProductOption = {
   async createProductOption(_: any, { productOption }, context: any) {

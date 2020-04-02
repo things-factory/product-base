@@ -1,5 +1,6 @@
 import { User } from '@things-factory/auth-base'
 import { Domain } from '@things-factory/shell'
+import { Bizplace } from '@things-factory/biz-base'
 import {
   Column,
   CreateDateColumn,
@@ -33,6 +34,11 @@ export class ProductOption {
     nullable: true
   })
   description: string
+
+  @ManyToOne(type => Bizplace, {
+    nullable: false
+  })
+  bizplace: Bizplace
 
   @OneToMany(
     type => ProductOptionValue,
