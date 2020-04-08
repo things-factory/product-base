@@ -7,7 +7,10 @@ export const productSetsResolver = {
     const convertedParams = convertListParams(params)
     const [items, total] = await getRepository(ProductSet).findAndCount({
       ...convertedParams,
-      relations: ['domain', 'creator', 'updater']
+      relations: ['domain', 'creator', 'updater'],
+      order: {
+        createdAt: 'ASC'
+      }
     })
     return { items, total }
   }

@@ -6,6 +6,7 @@ export const ProductSetPatch = gql`
     name: String
     description: String
     productSupersede: ObjectRef
+    product: ObjectRef
     type: String
     expirationPeriod: Int
     weightUnit: String

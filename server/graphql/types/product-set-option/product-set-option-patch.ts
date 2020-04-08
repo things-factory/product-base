@@ -5,7 +5,6 @@ export const ProductSetOptionPatch = gql`
     id: String
     name: String
     description: String
-    productSet: ObjectRef
     productOptionValue: ObjectRef
     cuFlag: String
   }

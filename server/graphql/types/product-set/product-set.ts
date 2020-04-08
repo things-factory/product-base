@@ -7,6 +7,7 @@ export const ProductSet = gql`
     name: String
     description: String
     productSupersede: ProductSet
+    product: Product
     type: String
     expirationPeriod: Int
     weightUnit: String

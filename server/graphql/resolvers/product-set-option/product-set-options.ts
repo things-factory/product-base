@@ -7,7 +7,7 @@ export const productSetOptionsResolver = {
     const convertedParams = convertListParams(params)
     const [items, total] = await getRepository(ProductSetOption).findAndCount({
       ...convertedParams,
-      relations: ['domain', 'creator', 'updater']
+      relations: ['productOptionValue', 'domain', 'creator', 'updater']
     })
     return { items, total }
   }

@@ -15,6 +15,7 @@ export const Mutation = `
 
   updateMultipleProductSetOption (
     patches: [ProductSetOptionPatch]!
+    productSetId: String!
   ): [ProductSetOption]
 
   deleteProductSetOption (
@@ -22,7 +23,7 @@ export const Mutation = `
   ): Boolean
 
   deleteProductSetOptions (
-    names: [String]!
+    ids: [String]!
   ): Boolean
 `
 
