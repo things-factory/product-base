@@ -1,17 +1,27 @@
 import { getPermittedBizplaceIds } from '@things-factory/biz-base'
-import { convertListParams, ListParam } from '@things-factory/shell'
-import { getRepository, In } from 'typeorm'
+import { convertListParams, ListParam, buildQuery } from '@things-factory/shell'
+import { getRepository, SelectQueryBuilder } from 'typeorm'
 import { Product } from '../../../entities'
 
 export const productsResolver = {
   async products(_: any, params: ListParam, context: any) {
-    const convertedParams = convertListParams(params)
-    convertedParams.where.bizplace = In(await getPermittedBizplaceIds(context.state.domain, context.state.user))
-
-    const [items, total] = await getRepository(Product).findAndCount({
-      ...convertedParams,
-      relations: ['domain', 'bizplace', 'productRef', 'creator', 'updater']
+    params.filters.push({
+      name: 'bizplace',
+      operator: 'in',
+      value: await getPermittedBizplaceIds(context.state.domain, context.state.user),
+      relation: true
     })
+
+    const qb: SelectQueryBuilder<Product> = getRepository(Product).createQueryBuilder('prd')
+    buildQuery(qb, params, context)
+
+    qb.leftJoinAndSelect('prd.domain', 'domain')
+      .leftJoinAndSelect('prd.bizplace', 'bizplace')
+      .leftJoinAndSelect('prd.productRef', 'productRef')
+      .leftJoinAndSelect('prd.creator', 'creator')
+      .leftJoinAndSelect('prd.updater', 'updater')
+
+    let [items, total] = await qb.getManyAndCount()
 
     return { items, total }
   }
