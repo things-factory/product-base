@@ -8,7 +8,6 @@ export const NewProduct = gql`
     productRef: ObjectRef
     parentProductRef: ObjectRef
     parentProductQty: Float
-    productRef: ObjectRef
     type: String
     expirationPeriod: Int
     weightUnit: String
