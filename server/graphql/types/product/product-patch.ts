@@ -3,14 +3,17 @@ import gql from 'graphql-tag'
 export const ProductPatch = gql`
   input ProductPatch {
     id: String
+    sku: String
     name: String
     description: String
     productRef: ObjectRef
+    parentProductRef: ObjectRef
+    parentProductQty: Float
     type: String
     expirationPeriod: Int
     weightUnit: String
     weight: Float
-    weightRatio: Float
+    density: Float
     lengthUnit: String
     width: Float
     depth: Float

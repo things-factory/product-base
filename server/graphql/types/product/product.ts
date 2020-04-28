@@ -5,14 +5,17 @@ export const Product = gql`
     id: String
     domain: Domain
     bizplace: Bizplace
+    sku: String
     name: String
     description: String
     productRef: Product
+    parentProductRef: Product
+    parentProductQty: Float
     type: String
     expirationPeriod: Int
     weightUnit: String
     weight: Float
-    weightRatio: Float
+    density: Float
     lengthUnit: String
     width: Float
     depth: Float

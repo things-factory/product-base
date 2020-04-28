@@ -2,14 +2,18 @@ import gql from 'graphql-tag'
 
 export const NewProduct = gql`
   input NewProduct {
+    sku: String
     name: String!
     description: String
+    productRef: ObjectRef
+    parentProductRef: ObjectRef
+    parentProductQty: Float
     productRef: ObjectRef
     type: String
     expirationPeriod: Int
     weightUnit: String
     weight: Float
-    weightRatio: Float
+    density: Float
     lengthUnit: String
     width: Float
     depth: Float
