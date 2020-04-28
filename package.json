@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/product-base",
-  "version": "2.4.0-beta.3",
+  "version": "2.5.0-beta.2",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
