@@ -11,6 +11,7 @@ export const Product = gql`
     productRef: Product
     parentProductRef: Product
     parentProductQty: Float
+    packingType: String
     type: String
     expirationPeriod: Int
     weightUnit: String

@@ -20,6 +20,7 @@ export const productsResolver = {
       .leftJoinAndSelect('Product.domain', 'Domain')
       .leftJoinAndSelect('Product.bizplace', 'Bizplace')
       .leftJoinAndSelect('Product.productRef', 'ProductRef')
+      .leftJoinAndSelect('Product.parentProductRef', 'ParentProductRef')
       .leftJoinAndSelect('Product.creator', 'Creator')
       .leftJoinAndSelect('Product.updater', 'Updater')
       .getManyAndCount()

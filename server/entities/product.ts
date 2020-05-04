@@ -55,6 +55,9 @@ export class Product {
   type: string
 
   @Column({ nullable: true })
+  packingType: string
+
+  @Column({ nullable: true })
   expirationPeriod: number
 
   @Column({ nullable: true })

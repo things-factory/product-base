@@ -9,6 +9,7 @@ export const ProductPatch = gql`
     productRef: ObjectRef
     parentProductRef: ObjectRef
     parentProductQty: Float
+    packingType: String
     type: String
     expirationPeriod: Int
     weightUnit: String
