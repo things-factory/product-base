@@ -14,8 +14,8 @@ export async function createProduct(product: Product, domain: Domain, user: any,
   if (product.productRef && product.productRef.id) {
     product.productRef = await repository.findOne(product.productRef.id)
   }
-  if (product.parentProductRef && product.parentProductRef.id) {
-    product.parentProductRef = await repository.findOne(product.parentProductRef.id)
+  if (product.childProductRef && product.childProductRef.id) {
+    product.childProductRef = await repository.findOne(product.childProductRef.id)
   }
 
   return await repository.save({

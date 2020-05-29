@@ -46,10 +46,10 @@ export class Product {
   productRef: Product
 
   @ManyToOne((type) => Product)
-  parentProductRef: Product
+  childProductRef: Product
 
   @Column('float', { nullable: true })
-  parentProductQty: number
+  childProductQty: number
 
   @Column()
   type: string

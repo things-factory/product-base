@@ -6,8 +6,8 @@ export const NewProduct = gql`
     name: String!
     description: String
     productRef: ObjectRef
-    parentProductRef: ObjectRef
-    parentProductQty: Float
+    childProductRef: ObjectRef
+    childProductQty: Float
     type: String
     expirationPeriod: Int
     weightUnit: String
