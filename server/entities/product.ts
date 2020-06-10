@@ -9,7 +9,7 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
 } from 'typeorm'
 import { ProductOption } from './product-option'
 
@@ -23,15 +23,18 @@ export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @ManyToOne(type => Domain, {
-    nullable: false
+  @ManyToOne((type) => Domain, {
+    nullable: false,
   })
   domain: Domain
 
-  @ManyToOne(type => Bizplace, {
-    nullable: false
+  @ManyToOne((type) => Bizplace, {
+    nullable: false,
   })
   bizplace: Bizplace
+
+  @Column({ nullable: true })
+  sku: string
 
   @Column()
   name: string
@@ -39,11 +42,20 @@ export class Product {
   @Column({ nullable: true })
   description: string
 
-  @ManyToOne(type => Product)
+  @ManyToOne((type) => Product)
   productRef: Product
+
+  @ManyToOne((type) => Product)
+  childProductRef: Product
+
+  @Column('float', { nullable: true })
+  childProductQty: number
 
   @Column()
   type: string
+
+  @Column({ nullable: true })
+  packingType: string
 
   @Column({ nullable: true })
   expirationPeriod: number
@@ -55,7 +67,7 @@ export class Product {
   weight: number
 
   @Column('float', { nullable: true })
-  weightRatio: number
+  density: number
 
   @Column({ nullable: true })
   lengthUnit: string
@@ -87,10 +99,10 @@ export class Product {
   @Column({ nullable: true })
   auxValue3: string
 
-  @ManyToOne(type => User, { nullable: true })
+  @ManyToOne((type) => User, { nullable: true })
   creator: User
 
-  @ManyToOne(type => User, { nullable: true })
+  @ManyToOne((type) => User, { nullable: true })
   updater: User
 
   @CreateDateColumn()
