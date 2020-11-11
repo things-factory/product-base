@@ -11,11 +11,11 @@ export const createProductResolver = {
 
 export async function createProduct(product: Product, domain: Domain, user: any, trxMgr?: EntityManager) {
   const repository: Repository<Product> = trxMgr ? trxMgr.getRepository(Product) : getRepository(Product)
-  if (product.productRef && product.productRef.id) {
+  if (product?.productRef?.id) {
     product.productRef = await repository.findOne(product.productRef.id)
   }
-  if (product.childProductRef && product.childProductRef.id) {
-    product.childProductRef = await repository.findOne(product.childProductRef.id)
+  if (product?.parentProductRef?.id) {
+    product.parentProductRef = await repository.findOne(product.parentProductRef.id)
   }
 
   return await repository.save({

@@ -7,8 +7,8 @@ export const ProductPatch = gql`
     name: String
     description: String
     productRef: ObjectRef
-    childProductRef: ObjectRef
-    childProductQty: Float
+    parentProductRef: ObjectRef
+    bundleQty: Float
     packingType: String
     type: String
     expirationPeriod: Int
@@ -19,6 +19,8 @@ export const ProductPatch = gql`
     width: Float
     depth: Float
     height: Float
+    primaryUnit: String
+    primaryValue: Float
     auxUnit1: String
     auxValue1: String
     auxUnit2: String

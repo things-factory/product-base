@@ -18,9 +18,9 @@ export async function updateProduct(id: string, patch: Product, domain: Domain, 
   if (patch.productRef && patch.productRef.id) {
     patch.productRef = await repository.findOne(patch.productRef.id)
   }
-
-  if (patch.childProductRef && patch.childProductRef.id) {
-    patch.childProductRef = await repository.findOne(patch.childProductRef.id)
+  
+  if (patch?.parentProductRef?.id) {
+    patch.parentProductRef = await repository.findOne(patch.parentProductRef.id)
   }
 
   return repository.save({

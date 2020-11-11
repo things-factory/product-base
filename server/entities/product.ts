@@ -45,11 +45,23 @@ export class Product {
   @ManyToOne((type) => Product)
   productRef: Product
 
-  @ManyToOne((type) => Product)
-  childProductRef: Product
+  @ManyToOne(
+    type => Product,
+    product => product.childProducts,
+    {
+      nullable: true
+    }
+  )
+  parentProductRef: Product
+
+  @OneToMany(
+    type => Product,
+    product => product.parentProductRef
+  )
+  childProducts: Product[]
 
   @Column('float', { nullable: true })
-  childProductQty: number
+  bundleQty: number
 
   @Column()
   type: string
@@ -80,6 +92,12 @@ export class Product {
 
   @Column('float', { nullable: true })
   height: number
+
+  @Column({ nullable: true })
+  primaryUnit: string
+
+  @Column('float', { nullable: true })
+  primaryValue: number
 
   @Column({ nullable: true })
   auxUnit1: string
