@@ -17,6 +17,8 @@ export const NewProduct = gql`
     width: Float
     depth: Float
     height: Float
+    primaryUnit: String
+    primaryValue: Float
     auxUnit1: String
     auxValue1: String
     auxUnit2: String

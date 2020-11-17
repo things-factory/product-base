@@ -16,7 +16,7 @@ import { ProductOption } from './product-option'
 @Entity('products')
 @Index(
   'ix_product_0',
-  (product: Product) => [product.domain, product.bizplace, product.name, product.description, product.weight],
+  (product: Product) => [product.domain, product.bizplace, product.name, product.description, product.primaryUnit, product.primaryValue],
   { unique: true }
 )
 export class Product {
