@@ -1,15 +1,12 @@
+import { User } from '@things-factory/auth-base'
+import { Domain } from '@things-factory/shell'
 import {
-  CreateDateColumn,
-  UpdateDateColumn,
+  Column, CreateDateColumn,
   Entity,
   Index,
-  Column,
-  OneToMany,
   ManyToOne,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn, UpdateDateColumn
 } from 'typeorm'
-import { Domain } from '@things-factory/shell'
-import { User } from '@things-factory/auth-base'
 import { Product } from './product'
 
 @Entity()

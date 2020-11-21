@@ -9,9 +9,8 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  UpdateDateColumn
 } from 'typeorm'
-import { ProductOption } from './product-option'
 
 @Entity('products')
 @Index(
@@ -23,14 +22,10 @@ export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @ManyToOne((type) => Domain, {
-    nullable: false,
-  })
+  @ManyToOne(type => Domain, { nullable: false })
   domain: Domain
 
-  @ManyToOne((type) => Bizplace, {
-    nullable: false,
-  })
+  @ManyToOne(type => Bizplace, { nullable: false })
   bizplace: Bizplace
 
   @Column({ nullable: true })
@@ -42,22 +37,13 @@ export class Product {
   @Column({ nullable: true })
   description: string
 
-  @ManyToOne((type) => Product)
+  @ManyToOne(type => Product)
   productRef: Product
 
-  @ManyToOne(
-    type => Product,
-    product => product.childProducts,
-    {
-      nullable: true
-    }
-  )
+  @ManyToOne(type => Product, product => product.childProducts, { nullable: true })
   parentProductRef: Product
 
-  @OneToMany(
-    type => Product,
-    product => product.parentProductRef
-  )
+  @OneToMany(type => Product, product => product.parentProductRef)
   childProducts: Product[]
 
   @Column('float', { nullable: true })
@@ -117,10 +103,10 @@ export class Product {
   @Column({ nullable: true })
   auxValue3: string
 
-  @ManyToOne((type) => User, { nullable: true })
+  @ManyToOne(type => User, { nullable: true })
   creator: User
 
-  @ManyToOne((type) => User, { nullable: true })
+  @ManyToOne(type => User, { nullable: true })
   updater: User
 
   @CreateDateColumn()
